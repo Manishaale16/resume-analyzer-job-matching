@@ -2,6 +2,9 @@
 
 SmartResume AI is a professional, high-fidelity platform designed to give job seekers an unfair advantage in the hiring process. It uses a combination of **Local NLP (Natural Language Processing)** and **Machine Learning** to help you beat ATS systems and optimize your professional profile.
 
+
+![image alt](https://github.com/Manishaale16/resume-analyzer-job-matching/blob/51fb75c7c13dec4f5d7f0a1ede46145e34b74201/Screenshot%202026-02-12%20094003.png)
+
 ---
 
 ## 📸 Screenshots
@@ -187,4 +190,8 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 
 
+<<<<<<< HEAD
 [def]: image.png
+=======
+[def]: image.png
+>>>>>>> 47099f4ab2d2e9e89b333ca3849cab578207a875
