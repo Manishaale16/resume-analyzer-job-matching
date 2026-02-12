@@ -2,6 +2,7 @@
 
 SmartResume AI is a professional, high-fidelity platform designed to give job seekers an unfair advantage in the hiring process. It uses a combination of **Local NLP (Natural Language Processing)** and **Machine Learning** to help you beat ATS systems and optimize your professional profile.
 
+
 ---
 
 ## ✨ Key Features
@@ -17,7 +18,49 @@ SmartResume AI is a professional, high-fidelity platform designed to give job se
 
 ---
 
-## 🛠️ Tech Stack
+## 🏗️ System Architecture
+
+```text
+       +-------------------+          +-----------------------+
+       |   Next.js Client  | <------> |   FastAPI Backend     |
+       |  (Framer Motion)  |   JWT    |  (Python/Async/CORS)  |
+       +---------+---------+          +-----------+-----------+
+                 ^                               |
+                 |                               v
+       +---------+---------+          +-----------------------+
+       | MongoDB Atlas DB  | <------> |  AI/NLP Engine        |
+       | (Analysis History)|          | (spaCy & Scikit-learn)|
+       +-------------------+          +-----------------------+
+```
+
+---
+
+## � Project Folder Structure
+
+```text
+Resume_analyzer/
+├── frontend/                 # Next.js Application
+│   ├── public/               # Static Assets
+│   └── src/
+│       ├── app/              # App Router Pages
+│       ├── components/       # Reusable UI Components
+│       ├── context/          # Auth State Management
+│       └── styles/           # Tailwind Config
+├── backend/                  # FastAPI Application
+│   ├── app/
+│   │   ├── api/              # API Route Controllers
+│   │   ├── core/             # JWT/Config/Security
+│   │   ├── models/           # Pydantic Schemas
+│   │   └── services/         # NLP & DB Logic
+│   ├── uploads/              # Temp File Storage
+│   └── requirements.txt      # Python Dependencies
+├── .gitignore                # Global Ignore Config
+└── README.md                 # Documentation
+```
+
+---
+
+## �🛠️ Tech Stack
 
 ### Frontend
 - **Framework**: Next.js 16 (App Router)
@@ -34,7 +77,20 @@ SmartResume AI is a professional, high-fidelity platform designed to give job se
 
 ---
 
-## 🚀 Getting Started
+## � Core API Endpoints
+
+| Method | Endpoint | Description | Auth Required |
+|:---|:---|:---|:---|
+| `POST` | `/api/auth/register` | User account registration | No |
+| `POST` | `/api/auth/login` | JWT token acquisition | No |
+| `POST` | `/api/resumes/analyze` | Upload and analyze resume against JD | (Optional) |
+| `GET` | `/api/resumes/history` | Retrieve user analysis history | Yes |
+| `POST` | `/api/jobs/match` | Match resume against mock job database | No |
+| `GET` | `/api/users/me` | Fetch current profile info | Yes |
+
+---
+
+## �🚀 Getting Started
 
 ### 1. Prerequisites
 - Node.js (v18+)
@@ -68,7 +124,7 @@ SECRET_KEY=yoursecretkeyhere
 MONGODB_URL=your_mongodb_connection_string
 DATABASE_NAME=resume_analyzer
 ALLOWED_ORIGINS=["http://localhost:3000"]
-# OPENAI_API_KEY=optional_key_here (System will use local NLP if left empty)
+# OPENAI_API_KEY=optional (System will use local NLP if left empty)
 ```
 
 ---
@@ -83,10 +139,39 @@ The system implements a **multi-stage analysis pipeline**:
 
 ---
 
-## 🤝 Support
+## 🛡️ Security & Privacy
 
-For support, email [support@smartresume.ai](mailto:support@smartresume.ai) or visit our [Contact Page](http://localhost:3000/contact).
+Privacy is a core tenet of SmartResume AI:
+- **Data Protection**: Resumes are processed in volatile memory. If saved to history, they are stored in an encrypted database instance.
+- **Local Analysis**: Leveraging local NLP means your resume content isn't unnecessarily sent to third-party AI companies unless you opt-in for LLM features.
+- **Secure Sessions**: Authentication is handled via stateless JWT tokens with periodic expiry.
 
 ---
 
-© 2026 SmartResume AI. Built for the modern job seeker.
+## 🔮 Future Enhancements
+
+- [ ] **AI Interview Prep**: Generate custom interview questions based on detected skill gaps.
+- [ ] **Resume Rewriter**: Direct integration with LLMs to suggest bullet point rewrites.
+- [ ] **Multi-user Teams**: Dashboard for recruiters to rank batches of resumes.
+- [ ] **Cloud Storage**: Integration with Google Drive and Dropbox for easy uploads.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these steps:
+1. Fork the Project.
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`).
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`).
+4. Push to the Branch (`git push origin feature/AmazingFeature`).
+5. Open a Pull Request.
+
+
+
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+
+
+[def]: image.png
